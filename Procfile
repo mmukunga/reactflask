@@ -1,1 +1,1 @@
-web: gunicorn app:reactflask
+web: gunicorn app:reactflask-smb
