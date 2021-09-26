@@ -12,7 +12,6 @@ def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
 api.add_resource(HelloApiHandler, '/flask/hello');
-api.add_resource(HelloApiHandler, '/flask/samuel');
 
 @app.route("/flask/samuel")
 def hello_world():
