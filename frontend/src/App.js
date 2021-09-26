@@ -8,20 +8,14 @@ function App() {
 
   useEffect(()=>{
     axios.get('https://reactflask-smb.herokuapp.com/flask/hello').then(response => {
-      console.log("SUCCESS", response)
-      setGetMessage(response)
+      console.log("SUCCESS", response);
+      console.log(response);
+      setGetMessage(response);
     }).catch(error => {
       console.log(error)
-    })
+    });
+  }, []);
 
-    // axios.get('http://localhost:5000/flask/hello').then(response => {
-    //   console.log("SUCCESS", response)
-    //   setGetMessage(response)
-    // }).catch(error => {
-    //   console.log(error)
-    // })
-
-  }, [])
   return (
     <div className="App">
       <header className="App-header">
