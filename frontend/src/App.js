@@ -40,7 +40,7 @@ function App() {
           :
           <h3>LOADING</h3>}</div>
       </header>
-      <h3>{getMessage && getMessage}</h3>
+      <h3>{getMessage.data.message}</h3>
       <h3>
       Simon!!!
       <a href="#" onClick={handleClick}>
