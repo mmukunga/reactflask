@@ -13,6 +13,6 @@ def serve(path):
 
 api.add_resource(HelloApiHandler, '/flask/hello');
 
-@app.route("/flask/samuel")
-def hello_world():
-    return "<p>Hello, Samuel!</p>"
+@app.route("/flask/<variable_name>")
+def hello_world(variable_name):
+    return "<p>Hello, Samuel! {variable_name}</p>"

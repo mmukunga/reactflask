@@ -20,8 +20,8 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
-    
-    axios.get('https://reactflask-smb.herokuapp.com/flask/samuel').then(response => {
+    const variable_name = 'Samuel';
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/${variable_name}`).then(response => {
       console.log("SUCCESS", response);
       console.log(response);
     }).catch(error => {
