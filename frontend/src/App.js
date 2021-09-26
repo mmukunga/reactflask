@@ -17,7 +17,7 @@ function App() {
   }, []);
 
 
-  handleClick = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
     
@@ -36,15 +36,16 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>React + Flask Tutorial</p>
         <div>{getMessage.status === 200 ? 
-          <h3>{getMessage.data.message}</h3>
+          <h3> YES!!! {getMessage.data.message}</h3>
           :
           <h3>LOADING</h3>}</div>
       </header>
       <p>{getMessage && getMessage}</p>
-
+      Simon!!!
       <a href="#" onClick={handleClick}>
         Click me
       </a>
+      Mukunga!!!!
     </div>
   );
 }
