@@ -16,6 +16,20 @@ function App() {
     });
   }, []);
 
+
+  handleClick = (e) => {
+    e.preventDefault();
+    console.log('The link was clicked.');
+    
+    axios.get('https://reactflask-smb.herokuapp.com/flask/samuel').then(response => {
+      console.log("SUCCESS", response);
+      console.log(response);
+    }).catch(error => {
+      console.log(error)
+    });
+
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -26,6 +40,11 @@ function App() {
           :
           <h3>LOADING</h3>}</div>
       </header>
+      <p>{getMessage && getMessage}</p>
+
+      <a href="#" onClick={handleClick}>
+        Click me
+      </a>
     </div>
   );
 }
