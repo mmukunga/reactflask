@@ -40,12 +40,14 @@ function App() {
           :
           <h3>LOADING</h3>}</div>
       </header>
-      <p>{getMessage && getMessage}</p>
+      <h3>{getMessage && getMessage}</h3>
+      <h3>
       Simon!!!
       <a href="#" onClick={handleClick}>
         Click me
       </a>
       Mukunga!!!!
+      </h3>
     </div>
   );
 }
