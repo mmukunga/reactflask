@@ -8,6 +8,6 @@ git commit -m "first commit"
 git branch -M main
 git push -u origin main
 
-heroku logs --tail --app reactflask
+heroku logs --tail --app reactflask-smb
 
-heroku builds:cache:purge -a reactflask  --confirm reactflask
+heroku builds:cache:purge -a reactflask  --confirm reactflask-smb
