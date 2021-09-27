@@ -34,15 +34,14 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
-    const name = 'Samuel';
-    axios.get(`https://reactflask-smb.herokuapp.com/flask/${name}`).then(response => {
+    const name = 'kylling';
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/kategori/${name}`).then(response => {
       console.log("2.SUCCESS: ", response);
       console.log(response);
       setMyMessageName(response.data);
     }).catch(error => {
       console.log(error)
     });
-
   };
 
   return (

@@ -19,7 +19,7 @@ cloudinary.config(
     secure=True
 )
 
-OPPSKRIFT_TEMPLATE = Template(r"/home/samuelmb_official/WimfMain-backend/test/${oppskrift}")
+OPPSKRIFT_TEMPLATE = Template(r"/static/${oppskrift}")
 
 logging.basicConfig(level=logging.DEBUG)
 
