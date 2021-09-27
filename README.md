@@ -48,4 +48,4 @@ git push -u origin main
 
 heroku logs --tail --app reactflask-smb
 
-heroku builds:cache:purge -a reactflask  --confirm reactflask-smb
+heroku builds:cache:purge -a reactflask-smb  --confirm reactflask-smb

@@ -5,12 +5,15 @@ import axios from 'axios'
 
 function App() {
   const [myMessage, setMyMessage] = useState({})
+  const [myMessageIds, setMyMessageIds] = useState('')
+  const [myMessageName, setMyMessageName] = useState('')
+
 
   useEffect(()=>{
     axios.get('https://reactflask-smb.herokuapp.com/flask/hello').then(response => {
       console.log("SUCCESS", response);
       console.log(response);
-      setMyMessage(response);
+      setMyMessage(response.data.message);
     }).catch(error => {
       console.log(error)
     });
@@ -22,7 +25,7 @@ function App() {
     axios.get(`https://reactflask-smb.herokuapp.com/flask/${id}`).then(response => {
       console.log("1.USE ID-SUCCESS: ", response);
       console.log(response);
-      setMyMessage(response);
+      setMyMessageIds(response.data);
     }).catch(error => {
       console.log(error)
     });
@@ -35,6 +38,7 @@ function App() {
     axios.get(`https://reactflask-smb.herokuapp.com/flask/${name}`).then(response => {
       console.log("2.SUCCESS: ", response);
       console.log(response);
+      setMyMessageName(response.data);
     }).catch(error => {
       console.log(error)
     });
@@ -47,12 +51,12 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>React + Flask Tutorial</p>
         <div>{myMessage.status === 200 ? 
-          <h3> Henting av meldinger fra Flask Fungerer som det skal: {myMessage.data.message}</h3>
+          <h3> Henting av meldinger fra Flask Fungerer som det skal: {myMessage.data.message} Ids {myMessageIds} Name {myMessageName} </h3>
           :
           <h3>..LOADING..</h3>}</div>
       </header>
       <h3>
-      <p> Testing - Pyton Flask Test: 
+      <p> xsxsx Testing - Pyton Flask Test: 
       <a href="#" onClick={handleClick}>
         Click me
       </a>
