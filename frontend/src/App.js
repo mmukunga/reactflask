@@ -4,25 +4,36 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
 function App() {
-  const [getMessage, setGetMessage] = useState({})
+  const [myMessage, setMyMessage] = useState({})
 
   useEffect(()=>{
     axios.get('https://reactflask-smb.herokuapp.com/flask/hello').then(response => {
       console.log("SUCCESS", response);
       console.log(response);
-      setGetMessage(response);
+      setMyMessage(response);
     }).catch(error => {
       console.log(error)
     });
   }, []);
 
 
+  useEffect(()=>{
+    const id = 100;
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/${id}`).then(response => {
+      console.log("1.USE ID-SUCCESS: ", response);
+      console.log(response);
+      setMyMessage(response);
+    }).catch(error => {
+      console.log(error)
+    });
+  }, []);
+
   const handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
-    const variable_name = 'Samuel';
-    axios.get(`https://reactflask-smb.herokuapp.com/flask/${variable_name}`).then(response => {
-      console.log("SUCCESS", response);
+    const name = 'Samuel';
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/${name}`).then(response => {
+      console.log("2.SUCCESS: ", response);
       console.log(response);
     }).catch(error => {
       console.log(error)
@@ -35,17 +46,17 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>React + Flask Tutorial</p>
-        <div>{getMessage.status === 200 ? 
-          <h3> YES!!! {getMessage.data.message}</h3>
+        <div>{myMessage.status === 200 ? 
+          <h3> Henting av meldinger fra Flask Fungerer som det skal: {myMessage.data.message}</h3>
           :
-          <h3>LOADING</h3>}</div>
+          <h3>..LOADING..</h3>}</div>
       </header>
       <h3>
-      Simon!!!
+      <p> Pyton Flask Test: 
       <a href="#" onClick={handleClick}>
         Click me
       </a>
-      Mukunga!!!!
+     </p>
       </h3>
     </div>
   );
