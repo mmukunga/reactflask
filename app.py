@@ -100,7 +100,8 @@ def get_image(variable_name): #variable_name
 @cross_origin()
 def get_recipe(variable_name):
     s = str(variable_name).replace("+", " ")
-    
+    print('Hello world - normal! ' + variable_name)
+    print('Hello world - sys.stderr', file=sys.stderr)
     oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
     print("OPPSKRIFT: " + oppskrift)
     # return oppskrift + ".txt"

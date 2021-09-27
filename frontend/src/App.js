@@ -34,8 +34,8 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
-    const name = 'Gulasj';
-    axios.get(`https://reactflask-smb.herokuapp.com/flask//oppskriftInfo/${name}`).then(response => {
+    const variable_name = 'Gulasj';
+    axios.get(`https://reactflask-smb.herokuapp.com/flask//oppskriftInfo/${variable_name}`).then(response => {
       console.log("2.SUCCESS: ", response);
       console.log(response);
       setMyMessageName(response.data);
