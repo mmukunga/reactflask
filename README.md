@@ -1,5 +1,29 @@
 # reactflask
+# Tutorial: https://code.visualstudio.com/docs/python/tutorial-flask
+# Create a project environment for the Flask tutorial
+# Windows
+# python -m venv env
+# In VS Code, open the Command Palette (View > Command Palette or (Ctrl+Shift+P)). 
+#   Then select the Python: 
+#   Select Interpreter command:
+#   correct version of python.exe
+# Update pip in the virtual environment by running the following command in the VS Code Terminal:
+#   python -m pip install --upgrade pip
+# Install Flask in the virtual environment by running the following command in the VS Code Terminal:
+#   python -m pip install flask
+# Create and run a minimal Flask app
+#   (env) D:\py\\hello_flask>
+
+# app.py
+# from flask import Flask
+# app = Flask(__name__)
+# @app.route("/")
+# def home():
+#    return "Hello, Flask!"
+# (env) D:\py\\hello_flask>python -m flask run
+
 # Tutorial: https://gist.github.com/Reine0017
+#
 cd D:\Temps\ReactFlask\frontend
 npm run build
 cd D:\Temps\ReactFlask

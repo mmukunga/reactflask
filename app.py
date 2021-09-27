@@ -17,15 +17,15 @@ api.add_resource(HelloApiHandler, '/flask/hello')
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
-@app.route("/about")
+@app.route("/flask/about")
 def about():
     return 'The About Page!'
 
-@app.route("/blog")
+@app.route("/flask/blog")
 def blog():
     return 'This is the blog'    
 
-@app.route("/blog/<blog_id>")
+@app.route("/flask/blog/<blog_id>")
 def blogPost(blog_id):
     return 'This is blog number ' + str(blog_id)
 
