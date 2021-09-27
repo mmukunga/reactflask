@@ -1,4 +1,15 @@
 # reactflask
+# install gunicorn in your virtual environment
+
+# pip install gunicorn
+# then update your requirements.txt file
+
+# pip freeze > requirements.txt
+
+# After checking that gunicorn is in requirements.txt run:
+
+# pip install -r requirements.txt
+
 # Tutorial: https://code.visualstudio.com/docs/python/tutorial-flask
 # Create a project environment for the Flask tutorial
 # Windows
