@@ -105,7 +105,7 @@ def get_recipe(variable_name):
     oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
     print("OPPSKRIFT: " + oppskrift)
     # return oppskrift + ".txt"
-    f = open(str(oppskrift + ".txt"), "rb")
+    f = open(str("https://reactflask-smb.herokuapp.com"+oppskrift + ".txt"), "rb")
     
     l = []
     for x in f:
