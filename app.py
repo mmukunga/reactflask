@@ -65,11 +65,11 @@ def get_recipe(variable_name):
     print(script_dir)
 
     path = pathlib.Path(os.path.realpath(__file__))
-    path = str(path.parent) + "/resources/Gulasj.txt"
+    path = str(path.parent) + "/resources/Gulasj2.txt"  
+    print(path)
     f = open(path, "r")
     print(f.read()) 
-    f.close()  
-    print(path)
+    f.close()
    
     # fulldict.update({tittel: d})
     # l.append(ingrdeiensListe)
