@@ -1,7 +1,9 @@
-from flask import Flask, Response, send_from_directory, jsonify, Blueprint, request
+from flask import Flask, Response, send_from_directory, jsonify, Blueprint, flash, request, redirect, url_for
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin #comment this on deployment
 from api.HelloApiHandler import HelloApiHandler
+
+from os import abspath, dirname
 
 import sys
 import logging
@@ -12,6 +14,8 @@ import cloudinary.api
 
 import json
 
+from pathlib import Path
+
 cloudinary.config(
     cloud_name = "wimf",
     api_key = "162995398385258",
@@ -21,12 +25,21 @@ cloudinary.config(
 
 OPPSKRIFT_TEMPLATE = Template(r"/static/${oppskrift}")
 
+
+
+CURRENT_DIRECTORY = dirname(abspath(__file__))
+
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 CORS(app) #comment this on deployment
 api = Api(app)
 api.add_resource(HelloApiHandler, '/flask/hello')
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = BASE_DIR.joinpath('resources')
+
 
 @app.route("/", defaults={'path':''})
 def serve(path):
@@ -102,9 +115,16 @@ def get_recipe(variable_name):
     s = str(variable_name).replace("+", " ")
     print('Hello world - normal! ' + variable_name)
     print('Hello world - sys.stderr', file=sys.stderr)
+
+    print('BASE_DIR! ' + BASE_DIR)
+    print('TEMPLATES_DIR:= ' + TEMPLATES_DIR, file=sys.stderr)
+
     oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
     print("OPPSKRIFT: " + oppskrift)
     # return oppskrift + ".txt"
+    f = open("welcome.txt", "r")
+    print(f.read()) 
+    f.close()  
     f = open(str("https://reactflask-smb.herokuapp.com"+oppskrift + ".txt"), "rb")
     
     l = []
