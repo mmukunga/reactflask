@@ -77,7 +77,7 @@ def get_recipe(variable_name):
     print(webbrowser.open(lst[10]))
 
     for filename in os.listdir(os.getcwd()):
-       with open(os.path.join(str(path.parent) + "/resources", filename), 'r') as f: 
+       with open(os.path.join(path + "/resources", filename), 'r') as f: 
           print(f.read()) 
           f.close()
     # fulldict.update({tittel: d})
