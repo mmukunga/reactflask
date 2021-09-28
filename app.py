@@ -3,7 +3,7 @@ from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin #comment this on deployment
 from api.HelloApiHandler import HelloApiHandler
 
-from os import abspath, dirname
+import sys,os,time,datetime
 
 import sys
 import logging
@@ -27,7 +27,7 @@ OPPSKRIFT_TEMPLATE = Template(r"/static/${oppskrift}")
 
 
 
-CURRENT_DIRECTORY = dirname(abspath(__file__))
+CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 logging.basicConfig(level=logging.DEBUG)
 
