@@ -81,7 +81,7 @@ def get_recipe(variable_name):
 
     for filename in lst:
        path = "/app/resources/Asiatisk lammegryte.txt" 
-       with open(path, 'r') as f: 
+       with open(path, 'r', encoding="ISO-8859-1") as f: 
           print(f.read()) 
           f.close()
 
