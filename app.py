@@ -107,7 +107,9 @@ def get_recipe(variable_name):
 
     path = pathlib.Path(os.path.realpath(__file__))
     path = str(path.parent) + "/resources/Gulasj.txt"
-    os.system(path)
+    f = open(path, "r")
+    print(f.read()) 
+    f.close()  
     print(path)
     oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
     print("OPPSKRIFT: " + oppskrift)
