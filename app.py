@@ -23,9 +23,7 @@ cloudinary.config(
     secure=True
 )
 
-OPPSKRIFT_TEMPLATE = Template(r"/static/${oppskrift}")
-
-
+OPPSKRIFT_TEMPLATE = Template(r"/resources/${oppskrift}")
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
@@ -44,18 +42,6 @@ TEMPLATES_DIR = BASE_DIR.joinpath('resources')
 @app.route("/", defaults={'path':''})
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
-
-@app.route("/flask/about")
-def about():
-    return 'The About Page!'
-
-@app.route("/flask/blog")
-def blog():
-    return 'This is the blog'    
-
-@app.route("/flask/blog/<blog_id>")
-def blogPost(blog_id):
-    return 'This is blog number ' + str(blog_id)
 
 @app.route("/flask/<string:name>")
 def hello_world(name):
