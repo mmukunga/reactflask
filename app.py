@@ -5,6 +5,8 @@ from api.HelloApiHandler import HelloApiHandler
 
 import sys,os,time,datetime
 
+from pathlib import Path
+
 import sys
 import logging
 
@@ -13,8 +15,6 @@ import cloudinary
 import cloudinary.api
 
 import json
-
-from pathlib import Path
 
 cloudinary.config(
     cloud_name = "wimf",
@@ -35,9 +35,9 @@ api = Api(app)
 api.add_resource(HelloApiHandler, '/flask/hello')
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = BASE_DIR.joinpath('resources')
-
+BASE_DIR = Path(__file__).resolve().parent
+script_dir = BASE_DIR/'resources'
+RESOURCES_DIR = BASE_DIR.joinpath('resources')
 
 @app.route("/", defaults={'path':''})
 def serve(path):
@@ -101,9 +101,9 @@ def get_recipe(variable_name):
     s = str(variable_name).replace("+", " ")
     print('Hello world - normal! ' + variable_name)
     print('Hello world - sys.stderr', file=sys.stderr)
+    print('RESOURCES_DIR:= ' + RESOURCES_DIR, file=sys.stderr)   
+    print(script_dir)
 
-    print('BASE_DIR! ' + BASE_DIR)
-    print('TEMPLATES_DIR:= ' + TEMPLATES_DIR, file=sys.stderr)
 
     oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
     print("OPPSKRIFT: " + oppskrift)
