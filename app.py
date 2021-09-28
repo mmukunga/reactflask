@@ -99,9 +99,9 @@ def get_image(variable_name): #variable_name
 @cross_origin()
 def get_recipe(variable_name):
     s = str(variable_name).replace("+", " ")
-    print('Hello world - normal! ' + variable_name)
-    print('Hello world - sys.stderr', file=sys.stderr)
-    print('RESOURCES_DIR:= ' + RESOURCES_DIR, file=sys.stderr)   
+    print('1.Hello world - normal! ' + variable_name)
+    print('2.Hello world - sys.stderr', file=sys.stderr)
+    print(RESOURCES_DIR, file=sys.stderr)   
     print(script_dir)
 
 
