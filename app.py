@@ -80,7 +80,7 @@ def get_recipe(variable_name):
     lst = os.listdir(str(path.parent) + "/resources")
 
     for filename in lst:
-       path = path + "/resources/" + filename 
+       path = "/app/resources/Asiatisk lammegryte.txt" 
        with open(path, 'r') as f: 
           print(f.read()) 
           f.close()
