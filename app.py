@@ -1,3 +1,4 @@
+import pathlib
 from flask import Flask, Response, send_from_directory, jsonify, Blueprint, flash, request, redirect, url_for
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin #comment this on deployment
@@ -29,7 +30,7 @@ CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 logging.basicConfig(level=logging.DEBUG)
 
-app = Flask(__name__, static_url_path='', static_folder='frontend/build')
+app = Flask(__name__, static_url_path='', static_folder='frontend/build', resources_folder='../resources')
 CORS(app) #comment this on deployment
 api = Api(app)
 api.add_resource(HelloApiHandler, '/flask/hello')
@@ -104,7 +105,10 @@ def get_recipe(variable_name):
     print(RESOURCES_DIR, file=sys.stderr)   
     print(script_dir)
 
-
+    path = pathlib.Path(os.path.realpath(__file__))
+    path = str(path.parent) + "/resources/Gulasj.txt"
+    os.system(path)
+    print(path)
     oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
     print("OPPSKRIFT: " + oppskrift)
     # return oppskrift + ".txt"
