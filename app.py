@@ -72,6 +72,8 @@ def get_recipe(variable_name):
     f = open(path, 'r', encoding="ISO-8859-1")
     print(f.read()) 
     f.close()
+
+    print(lst[10]) 
     print(webbrowser.open(lst[10]))
     # fulldict.update({tittel: d})
     # l.append(ingrdeiensListe)
