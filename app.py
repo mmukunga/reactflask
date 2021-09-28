@@ -55,47 +55,6 @@ def update_todo(id):
   print('Hello world - sys.stderr', file=sys.stderr)
   return Response('test', status=200, mimetype='text/html')
 
-
-@app.route("/flask/get_images/", methods=["GET"])
-@cross_origin()
-def get_images():
-    l = []
-    res = cloudinary.api.resources(
-    max_results=10, # Antall (maximum er 500, 30 er default)
-    prefix='wimf_bunnpris', # Velg folder å hente resources fra
-    type='upload') # Velg type: upload er opplastede bilder som alle de er
-    l.append(res)
-
-    res1 = cloudinary.api.resources(
-    max_results=10, # Antall (maximum er 500, 30 er default)
-    prefix='wimf_jacobs', # Velg folder å hente resources fra
-    type='upload') # Velg type: upload er opplastede bilder som alle de er
-    l.append(res1)
-    response = json.dumps(l)
-    # response = response.headers.add("Access-Control-Allow-Origin", "*")
-    return response
-
-
-
-@app.route("/flask/img/<variable_name>/", methods=["GET"]) #<variable_name>/
-@cross_origin()
-def get_image(variable_name): #variable_name
-    l = []
-    s = variable_name.replace("+", " ")
-    s = str(variable_name).split(',')
-    for x in s:
-        res = cloudinary.api.resources_by_tag(
-            tag=x
-        )
-        l.append(res)
-
-    if len(l) >= 2:
-        l.pop()
-
-    response = json.dumps(l[0])
-    return response
-
-
 @app.route('/flask/oppskriftInfo/<variable_name>/', methods=["GET"])
 @cross_origin()
 def get_recipe(variable_name):
@@ -111,82 +70,18 @@ def get_recipe(variable_name):
     print(f.read()) 
     f.close()  
     print(path)
-    oppskrift = OPPSKRIFT_TEMPLATE.substitute(oppskrift=s)
-    print("OPPSKRIFT: " + oppskrift)
-    # return oppskrift + ".txt"
-    f = open("welcome.txt", "r")
-    print(f.read()) 
-    f.close()  
-    f = open(str("https://reactflask-smb.herokuapp.com"+oppskrift + ".txt"), "rb")
-    
-    l = []
-    for x in f:
-        line = str(x).replace("\r", "").replace("\n", "").strip()
-        if (line.__eq__("")):
-            continue
-        elif (line.__eq__(' ')):
-            continue
-        else:
-            l.append(line)
-    
-    ingrdeiensListe = list()
-    for i in range(len(l)):
-        if ("Ingredienser:" in str(l[i])):
-            for y in range(i+1, len(l)):
-                if ("Fremgangs" not in str(l[y])):
-                    ingrdeiensListe.append(str(l[y]).replace("•", "").strip())
-                elif ("Fremgangs" in str(l[y])):
-                    break
-    
-    fremgangsmaateListe = list()
-    for i in range(len(l)):
-        if ("Fremgangs" in str(l[i])):
-            for y in range(i+1, len(l)):
-                if ("Tag:" not in str(l[y])):
-                    fremgangsmaateListe.append(str(l[y]).replace("•", "").strip())
-                else:
-                    break
-    
-    fremgangsmaateListe.pop()
-    tips = ""
-    for i in range(len(l)):
-        if (str(l[i]).__contains__("Tips")):
-            tips = l[i]
-            break
-    
-    undertittel = ""
-    for i in range(len(l)):
-        if (str(l[i]).__contains__("Undertittel")):
-            undertittel = l[i]
-            break
-
-    tittel = str(l[0]).replace("Tittel:", "").strip()
-                
+   
+    # fulldict.update({tittel: d})
+    # l.append(ingrdeiensListe)
     # fulldict = dict()
     d = dict()
-    d.update({"Undertittel":undertittel.replace("Undertittel:","").strip()})
-    d.update({"Ingredienser" : ingrdeiensListe})
-    d.update({"Fremgangsmaate" : fremgangsmaateListe})
-    d.update({"Tips": tips})
+    d.update({"Undertittel": "Gulasj.txt"})
+    d.update({"Ingredienser" : ["Ingrediens"]})
+    d.update({"Fremgangsmaate" : ["Fremgangsmaate"]})
+    d.update({"Tips": "tips"})
     # d.update({"Alt":l})
-    d.update({"Tittel":tittel})
-
-    # fulldict.update({tittel: d})
-    
-    # l.append(ingrdeiensListe)
+    d.update({"Tittel": "tittel"})
     return json.dumps(d)
-
-@app.route('/flask/kategori/<varible_name>/', methods=["GET"])
-@cross_origin()
-def DynamicUrl(varible_name):
-    res = cloudinary.Search()\
-        .expression(str(varible_name)+'*')\
-        .with_field('context')\
-        .with_field('tags')\
-        .max_results(100)\
-        .execute()
-    response = json.dumps(res)
-    return response
 
 @app.route('/flask/mmm/', methods=["GET"])
 @cross_origin()
