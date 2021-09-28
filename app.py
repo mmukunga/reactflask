@@ -78,8 +78,8 @@ def get_recipe(variable_name):
 
     path = pathlib.Path(os.path.realpath(__file__))
     lst = os.listdir(str(path.parent) + "/resources")
-    
-    for filename in os.listdir(str(path.parent) + "/resources"):
+
+    for filename in lst:
        with open(os.path.join(path + "/resources", filename), 'r') as f: 
           print(f.read()) 
           f.close()
