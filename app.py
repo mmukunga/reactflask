@@ -65,7 +65,7 @@ def get_recipe(variable_name):
     print(script_dir)
 
     path = pathlib.Path(os.path.realpath(__file__))
-    path = str(path.parent) + "/resources/Gulasj2.txt"  
+    path = str(path.parent) + "/resources/Urtemarinerte%20lammekoteletter%20med%20Halloumi.txt"  
     print(path)
     f = open(path, 'r', encoding="ISO-8859-1")
     print(f.read()) 
