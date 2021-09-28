@@ -67,7 +67,7 @@ def get_recipe(variable_name):
     path = pathlib.Path(os.path.realpath(__file__))
     path = str(path.parent) + "/resources/Gulasj2.txt"  
     print(path)
-    f = open(path, "r")
+    f = open(path, 'r', encoding="ISO-8859-1")
     print(f.read()) 
     f.close()
    
