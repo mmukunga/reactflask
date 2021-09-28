@@ -30,7 +30,7 @@ CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 logging.basicConfig(level=logging.DEBUG)
 
-app = Flask(__name__, static_url_path='', static_folder='frontend/build', resources_folder='../resources')
+app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 CORS(app) #comment this on deployment
 api = Api(app)
 api.add_resource(HelloApiHandler, '/flask/hello')
