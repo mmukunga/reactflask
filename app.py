@@ -4,6 +4,7 @@ from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin #comment this on deployment
 from api.HelloApiHandler import HelloApiHandler
 
+import webbrowser
 import sys,os,time,datetime
 
 from pathlib import Path
@@ -65,12 +66,13 @@ def get_recipe(variable_name):
     print(script_dir)
 
     path = pathlib.Path(os.path.realpath(__file__))
-    path = str(path.parent) + "/resources/Urtemarinerte%20lammekoteletter%20med%20Halloumi.txt"  
+    lst = os.listdir(str(path.parent) + "/resources")
+    path = str(path.parent) + "/resources/Gulasj2.txt"  
     print(path)
     f = open(path, 'r', encoding="ISO-8859-1")
     print(f.read()) 
     f.close()
-   
+    print(webbrowser.open(lst[-1]))
     # fulldict.update({tittel: d})
     # l.append(ingrdeiensListe)
     # fulldict = dict()
