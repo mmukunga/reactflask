@@ -80,11 +80,11 @@ def get_recipe(variable_name):
     lst = os.listdir(str(path.parent) + "/resources")
 
     for filename in lst:
-       path = os.getcwd() + filename 
+       path = path + "/resources/" + filename 
        with open(path, 'r') as f: 
           print(f.read()) 
           f.close()
-          
+
     # fulldict.update({tittel: d})
     # l.append(ingrdeiensListe)
     # fulldict = dict()
