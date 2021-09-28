@@ -76,7 +76,10 @@ def get_recipe(variable_name):
     print(lst[10]) 
     print(webbrowser.open(lst[10]))
 
-    for filename in os.listdir(os.getcwd()):
+    path = pathlib.Path(os.path.realpath(__file__))
+    lst = os.listdir(str(path.parent) + "/resources")
+    
+    for filename in os.listdir(str(path.parent) + "/resources"):
        with open(os.path.join(path + "/resources", filename), 'r') as f: 
           print(f.read()) 
           f.close()
