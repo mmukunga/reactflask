@@ -96,7 +96,8 @@ def get_recipe(variable_name):
     selected_files1 = find_files("Gulasj.txt", search_path)
     print(selected_files1)
     f = open(selected_files1[0], 'r', encoding="ISO-8859-1")
-    print(f.read()) 
+    file_as_string = f.read()
+    print(file_as_string) 
     f.close()
 
     # fulldict.update({tittel: d})
@@ -109,7 +110,7 @@ def get_recipe(variable_name):
     d.update({"Tips": "tips"})
     # d.update({"Alt":l})
     d.update({"Tittel": "tittel"})
-    return json.dumps(d)
+    return json.dumps(file_as_string)
 
 @app.route('/flask/mmm/', methods=["GET"])
 @cross_origin()
