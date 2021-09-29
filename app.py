@@ -25,7 +25,7 @@ cloudinary.config(
     secure=True
 )
 
-OPPSKRIFT_TEMPLATE = Template(r"/resources/${oppskrift}")
+OPPSKRIFT_TEMPLATE = Template(r"/app/resources/${oppskrift}")
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
@@ -56,7 +56,7 @@ def update_todo(id):
   print('Hello world - sys.stderr', file=sys.stderr)
   return Response('test', status=200, mimetype='text/html')
 
-@app.route('/flask/oppskriftInfo/<variable_name>/', methods=["GET"])
+@app.route('/flask/oppskriftInfo/<variable_name>', methods=["GET"])
 @cross_origin()
 def get_recipe(variable_name):
     s = str(variable_name).replace("+", " ")
@@ -84,6 +84,10 @@ def get_recipe(variable_name):
        with open(path, 'r', encoding="ISO-8859-1") as f: 
           print(f.read()) 
           f.close()
+    
+    search_path = r'/app/resources'
+    print(find_files("Gulasj.txt", str(path.parent) + "/resources"))
+    print(find_files("Gulasj.txt", search_path))
 
     # fulldict.update({tittel: d})
     # l.append(ingrdeiensListe)
@@ -104,3 +108,10 @@ def mmm():
     response = json.dumps(res)
     return response
      
+def find_files(filename, search_path):
+   result = []
+   # Wlaking top-down from the root
+   for root, dir, files in os.walk(search_path):
+      if filename in files:
+         result.append(os.path.join(root, filename))
+   return result
