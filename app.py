@@ -66,24 +66,25 @@ def get_recipe(variable_name):
     print(script_dir)
 
     path = pathlib.Path(os.path.realpath(__file__))
-    lst = os.listdir(str(path.parent) + "/resources")
-    path = str(path.parent) + "/resources/Gulasj2.txt"  
-    print(path)
-    f = open(path, 'r', encoding="ISO-8859-1")
-    print(f.read()) 
-    f.close()
+    #lst = os.listdir(str(path.parent) + "/resources")
+    #path = str(path.parent) + "/resources/Gulasj2.txt"  
+    #print(path)
+    #f = open(path, 'r', encoding="ISO-8859-1")
+    #print(f.read()) 
+    #f.close()
 
-    print(lst[10]) 
-    print(webbrowser.open(lst[10]))
+    #print(lst[10]) 
+    #print(webbrowser.open(lst[10]))
 
-    path = pathlib.Path(os.path.realpath(__file__))
-    lst = os.listdir(str(path.parent) + "/resources")
+    #path = pathlib.Path(os.path.realpath(__file__))
+    
+    #lst = os.listdir(str(path.parent) + "/resources")
 
-    for filename in lst:
-       path = "/app/resources/"+ filename
-       with open(path, 'r', encoding="ISO-8859-1") as f: 
-          print(f.read()) 
-          f.close()
+    #for filename in lst:
+    #   path = "/app/resources/"+ filename
+    #   with open(path, 'r', encoding="ISO-8859-1") as f: 
+    #      print(f.read()) 
+    #      f.close()
     
     search_path = r'/app/resources'
     print(find_files("Gulasj.txt", str(path.parent) + "/resources"))
