@@ -8,6 +8,7 @@ function App() {
   const [state, setState] = useState({})
   const [myMessageIds, setMyMessageIds] = useState('')
   const [myMessageName, setMyMessageName] = useState('')
+  const [fileData, setFileData] = useState('')
 
   const options = [
     { value: 'Blåskjellsalat.txt', label: 'Blåskjellsalat.txt' },
@@ -47,7 +48,7 @@ function App() {
     axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${value}`).then(response => {
       console.log("2.handleChange SUCCESS: ", response);
       console.log(response);
-      setMyMessageName(response.data);
+      setFileData(response.data);
     }).catch(error => {
       console.log(error)
     });
@@ -87,6 +88,10 @@ function App() {
       <select onChange={e => handleChange(e)} className="SelectFile" >
         {options.map((value, label) => <option value={value}>{label}</option>)}
       </select >
+      
+      Filer:
+      {fileData && fileData}
+
       </p>
     </div>
   );
