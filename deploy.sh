@@ -3,7 +3,8 @@
 echo "Hello, World!" 
 cd D:\Temps\ReactFlask\frontend
 echo rmdir 'D:\Temps\ReactFlask\frontend\build\'  /s /q
-remove-item 'D:\Temps\ReactFlask\frontend\build\*' -recurse -force
+echo remove-item 'D:\Temps\ReactFlask\frontend\build\*' -recurse -force
+rm -rf 'D:\Temps\ReactFlask\frontend\build'
 npm run build
 cd D:\Temps\ReactFlask
 
