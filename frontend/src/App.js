@@ -5,9 +5,16 @@ import axios from 'axios'
 
 function App() {
   const [myMessage, setMyMessage] = useState({})
+  const [state, setState] = useState({})
   const [myMessageIds, setMyMessageIds] = useState('')
   const [myMessageName, setMyMessageName] = useState('')
 
+  const options = [
+    { value: 'Blåskjellsalat.txt', label: 'Blåskjellsalat.txt' },
+    { value: 'Andebryst med pastinakkrem og appelsinsaus.txt', label: 'Andebryst med pastinakkrem og appelsinsaus.txt' },
+    { value: 'Gulasj.txt', label: 'Gulasj.txt' },
+    { value: 'Burrito med stekt kyllingfilet, ris, avokadodressing, paprika-, chili- og mangosalsa.txt', label: 'Burrito med stekt kyllingfilet, ris, avokadodressing, paprika-, chili- og mangosalsa.txt' },
+  ];
 
   useEffect(()=>{
     axios.get('https://reactflask-smb.herokuapp.com/flask/hello').then(response => {
@@ -30,6 +37,20 @@ function App() {
       console.log(error)
     });
   }, []);
+
+
+  const handleChange = (selectedOption) => {
+    setState({ selectedOption });
+    console.log(`handleChange Option selected:`, selectedOption);
+    console.log('handleChange The link was clicked.');
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${selectedOption}`).then(response => {
+      console.log("2.handleChange SUCCESS: ", response);
+      console.log(response);
+      setMyMessageName(response.data);
+    }).catch(error => {
+      console.log(error)
+    });
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -61,6 +82,9 @@ function App() {
       </a>
      </p>
       </h3>
+      <p>
+      <select value={selectedOption} onChange={handleChange} options={options}/>
+      </p>
     </div>
   );
 }
