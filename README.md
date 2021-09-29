@@ -37,7 +37,7 @@
 #
 cd D:\Temps\ReactFlask\frontend
 # rmdir 'D:\Temps\ReactFlask\frontend\build\'  /s /q
-remove-item 'D:\Temps\ReactFlask\frontend\build\' -recurse -force
+remove-item 'D:\Temps\ReactFlask\frontend\build\*' -recurse -force
 npm run build
 cd D:\Temps\ReactFlask
 
