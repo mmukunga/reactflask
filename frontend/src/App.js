@@ -39,11 +39,12 @@ function App() {
   }, []);
 
 
-  const handleChange = (selectedOption) => {
-    setState({ selectedOption });
-    console.log(`handleChange Option selected:`, selectedOption);
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setState({ value });
+    console.log(`handleChange Option selected:`, value);
     console.log('handleChange The link was clicked.');
-    axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${selectedOption}`).then(response => {
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${value}`).then(response => {
       console.log("2.handleChange SUCCESS: ", response);
       console.log(response);
       setMyMessageName(response.data);
@@ -83,7 +84,9 @@ function App() {
      </p>
       </h3>
       <p>
-      <select value={selectedOption} onChange={handleChange} options={options}/>
+      <select onChange={e => handleChange(e)} className="SelectFile" >
+        {options.map((value, label) => <option value={value}>{label}</option>)}
+      </select >
       </p>
     </div>
   );
