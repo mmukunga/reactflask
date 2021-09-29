@@ -36,7 +36,7 @@
 # Tutorial: https://gist.github.com/Reine0017
 #
 cd D:\Temps\ReactFlask\frontend
-rmdir "D:\Temps\ReactFlask\frontend\build\"  /s /q
+rmdir 'D:\Temps\ReactFlask\frontend\build\'  /s /q
 npm run build
 cd D:\Temps\ReactFlask
 
