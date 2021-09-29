@@ -11,10 +11,10 @@ function App() {
   const [fileData, setFileData] = useState('')
 
   const options = [
-    { value: 'Blåskjellsalat.txt', label: 'Blåskjellsalat.txt' },
-    { value: 'Andebryst med pastinakkrem og appelsinsaus.txt', label: 'Andebryst med pastinakkrem og appelsinsaus.txt' },
-    { value: 'Gulasj.txt', label: 'Gulasj.txt' },
-    { value: 'Burrito med stekt kyllingfilet, ris, avokadodressing, paprika-, chili- og mangosalsa.txt', label: 'Burrito med stekt kyllingfilet, ris, avokadodressing, paprika-, chili- og mangosalsa.txt' },
+    { key: 'Blåskjellsalat.txt', value: 'Blåskjellsalat.txt' },
+    { key: 'Andebryst med pastinakkrem og appelsinsaus.txt', value: 'Andebryst med pastinakkrem og appelsinsaus.txt' },
+    { key: 'Gulasj.txt', value: 'Gulasj.txt' },
+    { key: 'Burrito med stekt kyllingfilet, ris, avokadodressing, paprika-, chili- og mangosalsa.txt', value: 'Burrito med stekt kyllingfilet, ris, avokadodressing, paprika-, chili- og mangosalsa.txt' },
   ];
 
   useEffect(()=>{
@@ -42,7 +42,7 @@ function App() {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    setState({ value });
+    setState({'name':name, 'value': value}); 
     console.log(`handleChange Option selected:`, value);
     console.log('handleChange The link was clicked.');
     axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${value}`).then(response => {
@@ -86,13 +86,13 @@ function App() {
       </h3>
       <p>
       <select onChange={e => handleChange(e)} className="SelectFile" >
-        {options.map((value, label) => <option value={value}>{label}</option>)}
+        {options.map((key, value) => <option value={key}>{value}</option>)}
       </select >
-      
-      Filer:
-      {fileData && fileData}
-
       </p>
+      Filer:
+      <pre>
+        {fileData && fileData}
+      </pre>
     </div>
   );
 }
