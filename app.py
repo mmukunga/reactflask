@@ -87,8 +87,17 @@ def get_recipe(variable_name):
     #      f.close()
     
     search_path = r'/app/resources'
-    print(find_files("Gulasj.txt", str(path.parent) + "/resources"))
-    print(find_files("Gulasj.txt", search_path))
+    selected_files0 = find_files("Gulasj.txt", str(path.parent) + "/resources")
+    print(selected_files0)
+    f = open(selected_files0, 'r', encoding="ISO-8859-1")
+    print(f.read()) 
+    f.close()
+
+    selected_files1 = find_files("Gulasj.txt", search_path)
+    print(selected_files1)
+    f = open(selected_files1, 'r', encoding="ISO-8859-1")
+    print(f.read()) 
+    f.close()
 
     # fulldict.update({tittel: d})
     # l.append(ingrdeiensListe)
