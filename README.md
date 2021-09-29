@@ -36,6 +36,7 @@
 # Tutorial: https://gist.github.com/Reine0017
 #
 cd D:\Temps\ReactFlask\frontend
+del /q /s "D:\Temps\ReactFlask\frontend\build"
 npm run build
 cd D:\Temps\ReactFlask
 
