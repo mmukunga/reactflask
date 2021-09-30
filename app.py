@@ -75,8 +75,9 @@ def get_recipe(filename):
            line = line.rstrip() 
            print(line) 
            if line not in ["Tittel:", "Undertittel:", "Ingredienser:", "Fremgangsmåte:", "Tips:"]:
-              print('1.line..'+line.rstrip())  
-              meny_innhold.append(line[:-1])
+              line = line[:-1] 
+              print('1.line..' + line)  
+              meny_innhold.append(line)
            else:
               print('2.line..')   
               file_dict[line].append(meny_innhold)
