@@ -67,8 +67,8 @@ function App() {
     });
   };
 
-  console.log(fileData)
-  
+  console.log(fileData.Framgangsmåte)
+
   return (
     <div className="App">
       <header className="App-header">
