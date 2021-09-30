@@ -78,18 +78,18 @@ def get_recipe(filename):
        for line in f:
           line = line.rstrip()   
           print(line)
-          if line == searchKey:
+          if line == "Fremgangsmåte:":
              line = line[:-1]  
              print('2.line..' + line)   
              file_dict[line].append(line)
              meny_innhold = list()
           elif line not in ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]:                       
-             print('1.line..' + line)  
-             file_dict[line].append(meny_innhold)
-             break
-          else:
+             print('1.line..' + line)
              meny_innhold.append(line)
-    f.close()
+          else:  
+             file_dict[line].append(meny_innhold)
+             
+       f.close()
     
     print("\n", dict(file_dict))
     return json.dumps(file_dict)
