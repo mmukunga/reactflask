@@ -35,6 +35,7 @@
 
 # Tutorial: https://gist.github.com/Reine0017
 #
+
 cd D:\Temps\ReactFlask\frontend
 # rmdir 'D:\Temps\ReactFlask\frontend\build\'  /s /q
 remove-item 'D:\Temps\ReactFlask\frontend\build\*' -recurse -force
@@ -47,6 +48,8 @@ git commit -m "first commit"
 # git commit --allow-empty -m "Purge cache"
 git branch -M main
 git push -u origin main
+
+
 
 heroku logs --tail --app reactflask-smb
 

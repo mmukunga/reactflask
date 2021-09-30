@@ -74,8 +74,7 @@ def get_recipe(filename):
        initArray = ["Tittel:", "Undertittel:", "Fremgangsmåte:", "Ingredienser:", "Tips:"]        
        searchKey = "Fremgangsmåte:"
        fArray = ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]    
-       #fArray = ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]   
-       found = False
+       #fArray = ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"] 
        for line in f:
           line = line.rstrip()   
           print(line)
@@ -84,8 +83,7 @@ def get_recipe(filename):
              print('2.line..' + line)   
              file_dict[line].append(line)
              meny_innhold = list()
-             found = True
-          elif found == True and line not in fArray:                       
+          elif line not in ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]:                       
              print('1.line..' + line)  
              file_dict[line].append(meny_innhold)
              break
