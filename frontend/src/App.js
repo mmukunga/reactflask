@@ -42,7 +42,7 @@ function App() {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    setState({'name':name, 'value': value}); 
+    setState({'name': name, 'value': value}); 
     console.log(`handleChange Option selected:`, value);
     console.log('handleChange The link was clicked.');
     axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${value}`).then(response => {
@@ -57,8 +57,8 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     console.log('The link was clicked.');
-    const variable_name = 'Gulasj.txt';
-    axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${variable_name}`).then(response => {
+    const filename = 'Gulasj.txt';
+    axios.get(`https://reactflask-smb.herokuapp.com/flask/oppskriftInfo/${filename}`).then(response => {
       console.log("2.SUCCESS: ", response);
       console.log(response);
       setMyMessageName(response.data);

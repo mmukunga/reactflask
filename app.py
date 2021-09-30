@@ -9,6 +9,8 @@ import sys,os,time,datetime
 
 from pathlib import Path
 
+from collections import defaultdict
+
 import sys
 import logging
 
@@ -56,63 +58,29 @@ def update_todo(id):
   print('Hello world - sys.stderr', file=sys.stderr)
   return Response('test', status=200, mimetype='text/html')
 
-@app.route('/flask/oppskriftInfo/<variable_name>', methods=["GET"])
+@app.route('/flask/oppskriftInfo/<string:filename>', methods=["GET"])
 @cross_origin()
-def get_recipe(variable_name):
-    s = str(variable_name).replace("+", " ")
-    print('1.Hello world - normal! ' + variable_name)
-    print('2.Hello world - sys.stderr', file=sys.stderr)
-    print(RESOURCES_DIR, file=sys.stderr)   
-    print(script_dir)
-
-    path = pathlib.Path(os.path.realpath(__file__))
-    #lst = os.listdir(str(path.parent) + "/resources")
-    #path = str(path.parent) + "/resources/Gulasj2.txt"  
-    #print(path)
-    #f = open(path, 'r', encoding="ISO-8859-1")
-    #print(f.read()) 
-    #f.close()
-
-    #print(lst[10]) 
-    #print(webbrowser.open(lst[10]))
-
-    #path = pathlib.Path(os.path.realpath(__file__))
-    
-    #lst = os.listdir(str(path.parent) + "/resources")
-
-    #for filename in lst:
-    #   path = "/app/resources/"+ filename
-    #   with open(path, 'r', encoding="ISO-8859-1") as f: 
-    #      print(f.read()) 
-    #      f.close()
+def get_recipe(filename):
+    MY_FILENAME = "Gulasj.txt"
     
     search_path = r'/app/resources'
-    #selected_files0 = find_files("Gulasj.txt", str(path.parent) + "/resources")
-    selected_files = find_files("Gulasj.txt", search_path)
+    selected_files = find_files(MY_FILENAME, search_path)
     print(selected_files)
+
+    file_dict = defaultdict(list)
+    meny_innhold = list()
+
     with open(selected_files[0], 'r', encoding="ISO-8859-1") as f:
-        for line in f.readlines():
-          print(line) 
+        for line in f:
+           if line not in ["Tittel", "Undertittel", "Ingredienser", "Fremgangsmaate", "Tips"]:
+              meny_innhold.append(line)
+           else:
+              file_dict[line].append(meny_innhold)
+              meny_innhold = list()
         f.close()
-
-    #selected_files1 = find_files("Gulasj.txt", search_path)
-    #print(selected_files1)
-    #f = open(selected_files1[0], 'r', encoding="ISO-8859-1")
-    #file_as_string = f.read()
-    #print(file_as_string) 
-    #f.close()
-
-    # fulldict.update({tittel: d})
-    # l.append(ingrdeiensListe)
-    # fulldict = dict()
-    d = dict()
-    d.update({"Undertittel": "Gulasj.txt"})
-    d.update({"Ingredienser" : ["Ingrediens"]})
-    d.update({"Fremgangsmaate" : ["Fremgangsmaate"]})
-    d.update({"Tips": "tips"})
-    # d.update({"Alt":l})
-    d.update({"Tittel": "tittel"})
-    return json.dumps(file_as_string)
+    
+    print("\n", dict(file_dict))
+    return json.dumps(file_dict)
 
 @app.route('/flask/mmm/', methods=["GET"])
 @cross_origin()
