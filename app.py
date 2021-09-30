@@ -85,7 +85,7 @@ def get_recipe(filename):
              file_dict[line].append(line)
              meny_innhold = list()
              found = True
-          if found == True and line in fArray:                       
+          elif found == True and line not in fArray:                       
              print('1.line..' + line)  
              file_dict[line].append(meny_innhold)
              break
