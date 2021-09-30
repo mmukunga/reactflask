@@ -73,7 +73,7 @@ def get_recipe(filename):
     with open(selected_files[0], 'r', encoding="ISO-8859-1") as f:
        initArray = ["Tittel:", "Undertittel:", "Fremgangsmåte:", "Ingredienser:", "Tips:"]        
        searchKey = "Fremgangsmåte:"
-       fArray = initArray.remove(searchKey)
+       fArray = ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]    
        #fArray = ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]   
        found = False
        for line in f:
