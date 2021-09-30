@@ -8,7 +8,7 @@ function App() {
   const [state, setState] = useState({})
   const [myMessageIds, setMyMessageIds] = useState('')
   const [myMessageName, setMyMessageName] = useState('')
-  const [fileData, setFileData] = useState('')
+  const [fileData, setFileData] = useState([])
 
   const options = [
     { key: 'Blåskjellsalat.txt', value: 'Blåskjellsalat.txt' },
