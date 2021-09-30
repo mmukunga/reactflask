@@ -72,6 +72,7 @@ def get_recipe(filename):
 
     with open(selected_files[0], 'r', encoding="ISO-8859-1") as f:
         for line in f:
+           print(line) 
            if line not in ["Tittel", "Undertittel", "Ingredienser", "Fremgangsmaate", "Tips"]:
               meny_innhold.append(line)
            else:
