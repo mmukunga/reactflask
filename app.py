@@ -71,18 +71,27 @@ def get_recipe(filename):
     meny_innhold = list()
 
     with open(selected_files[0], 'r', encoding="ISO-8859-1") as f:
-        for line in f:
-           line = line.rstrip() 
-           print(line) 
-           if line not in ["Tittel:", "Undertittel:", "Ingredienser:", "Fremgangsmåte:", "Tips:"]:
-              line = line[:-1] 
-              print('1.line..' + line)  
-              meny_innhold.append(line)
-           else:
-              print('2.line..')   
-              file_dict[line].append(meny_innhold)
-              meny_innhold = list()
-        f.close()
+       initArray = ["Tittel:", "Undertittel:", "Fremgangsmåte:", "Ingredienser:", "Tips:"]        
+       searchKey = "Fremgangsmåte:"
+       fArray = initArray.remove(searchKey)
+       #fArray = ["Tittel:", "Undertittel:", "Ingredienser:", "Tips:"]   
+       found = False
+       for line in f:
+          line = line.rstrip()   
+          print(line)
+          if line == searchKey:
+             line = line[:-1]  
+             print('2.line..' + line)   
+             file_dict[line].append(line)
+             meny_innhold = list()
+             found = True
+          if found and line in fArray:                       
+             print('1.line..' + line)  
+             file_dict[line].append(meny_innhold)
+             break
+          else:
+             meny_innhold.append(line)
+    f.close()
     
     print("\n", dict(file_dict))
     return json.dumps(file_dict)

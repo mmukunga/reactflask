@@ -67,8 +67,8 @@ function App() {
     });
   };
 
-  console.log(fileData.Framgangsmåte[0])
-  console.log(fileData.Ingredienser[0])
+  console.log(fileData.Fremgangsmåte)
+  console.log(fileData.Ingredienser)
 
   return (
     <div className="App">
